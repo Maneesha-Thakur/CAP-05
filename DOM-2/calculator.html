@@ -1,0 +1,83 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+#parent{
+  
+  display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4,85px);
+      grid-gap: 1px;
+      padding: 20px;
+gap: 0px;
+      
+      width: 25%;
+      height: 500px;
+      margin: 0 auto;
+    
+      border: 1px solid whitesmoke;
+      background-color: white;
+  
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#parent>.child{
+border: 1px solid transparent;
+width: 50%;
+height: 50px;
+margin-top: 30px;
+
+background-color:white;
+border-radius: 10px;
+
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}input{
+ 
+  border: 1px solid whitesmoke;
+height: 67px;
+  grid-column: span 4;
+    margin-top: 24px;
+            
+      border-radius: 9px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      
+    
+}
+.child{
+  text-align: center;
+  padding: 13px;
+
+margin: auto;
+}
+  </style>
+</head>
+<body>
+  <h1 style="font-size: 7vh;color: rgb(90, 117, 108);text-align: center;padding-bottom:23px;">Masai Calculator</h1>
+  <div id="parent">
+    <input type="text"class="input">
+    <div class="child"><p><b>1</b></p></div> 
+    <div class="child"><p><b>2</b></p></div >
+    <div class="child">
+    <p><b>3</b></p>
+    </div>
+    <div class="child" style="background-color: black;color: white;"><p><b>+</b></p></div>
+    <div class="child"><p><b>4</b></p></div>
+    <div class="child"><p><b>5</b></p></div>
+    <div class="child"><p><b>6</b></p></div>
+    <div class="child" style="background-color: black;color: white;"><p><b>-</b></p></div>
+    <div class="child"><p><b>7</b></p></div>
+    <div class="child"><p><b>8</b>
+    </p></div>
+    <div class="child"><p><b>9</b></p></div>
+    <div class="child" style="background-color: black;color: white;"><p><b>x</b></p></div>
+    <div class="child" style="background-color: red;color: white;"><p><b>C</b></p></div>
+    <div class="child"><p><b>0</b></p></div>
+    <div class="child" style="background-color: black;color: white;"><p><b>=</b></p></div>
+    <div class="child" style="background-color: black;color: white;"><p><b>/</b></p></div>
+
+  </div>
+</body>
+</html>
