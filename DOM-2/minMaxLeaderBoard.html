@@ -1,0 +1,148 @@
+<!-- MIN & MAX LEADERBOARD (DOM)
+Create the file leaderboard.html so that it looks similar to the image below
+Functionality
+By clicking on any number it shows up in the score box joined to any previous numbers already present (Eg: To enter a score of 423 you have to press 4 2 3)
+Once the button ENTER is pressed the score gets compared with the MIN and MAX boxes, if the current score is less than the MIN score it gets updated with the current score, if the current score is greater than the MAX score it gets updated with the current score
+The SCORE box will be reset with empty value -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .leaderboard {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .score-box {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            transition: background-color 0.2s;
+            width: 30%;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #d0d0d0;
+        }
+
+        #enter {
+            background-color:black;
+
+            color: #fff;
+        }
+
+        #enter:hover {
+            background-color: #e09500;
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard">
+        <h1>Leaderboard</h1>
+        <div class="score-box" id="score"> </div>
+        <div class="buttons">
+            <button style="background-color: green;" class="button" onclick="addToScore(1)">1</button>
+            <button class="button" onclick="addToScore(2)"style="background-color: orange;">2</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: green;">3</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: orange;">4</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: orange;">5</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: orange;">6</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: green;">7</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: orange;">8</button>
+            <button class="button" onclick="addToScore(3)"style="background-color: green;">9</button>
+            <button class="button" onclick=""></button>
+            <button class="button" onclick="addToScore(3)"style="background-color: blueviolet;" >0</button>
+            <button class="button" onclick=""></button>
+            <!-- ... other number buttons ... -->
+            <button class="button" onclick="enterScore()" id="enter">ENTER</button>
+            <button class="button" onclick="resetScore()">RESET</button>
+        </div>
+        <div class="score-box"style="background-color: red" >MIN: <span id="minScore">-</span></div>
+        <div class="score-box"style="background-color: green" >MAX: <span id="maxScore">-</span></div>
+    </div>
+    <script>
+        let currentScore = ''; // To store the current score
+        let minScore = Infinity; // To store the minimum score (initialized with positive infinity)
+        let maxScore = -Infinity; // To store the maximum score (initialized with negative infinity)
+
+        // Function to add a number to the current score
+        function addToScore(number) {
+            currentScore += number;
+            updateScoreDisplay();
+        }
+
+        // Function to update the score box with the current score
+        function updateScoreDisplay() {
+            const scoreBox = document.getElementById('score');
+            scoreBox.textContent = currentScore;
+        }
+
+        // Function to calculate and update the minimum and maximum scores
+        function enterScore() {
+            const parsedScore = parseInt(currentScore);
+            if (!isNaN(parsedScore)) {
+                if (parsedScore < minScore) {
+                    minScore = parsedScore;
+                    document.getElementById('minScore').innerText = minScore;
+                }
+                if (parsedScore > maxScore) {
+                    maxScore = parsedScore;
+                    document.getElementById('maxScore').textContent = maxScore;
+                }
+            }
+            currentScore = ''; // Reset the current score
+            updateScoreDisplay(); // Clear the score box
+        }
+
+        // Function to reset the score box and scores
+        function resetScore() {
+            currentScore = '';
+            minScore = Infinity;
+            maxScore = -Infinity;
+            updateScoreDisplay();
+            document.getElementById('minScore').textContent = '-';
+            document.getElementById('maxScore').textContent = '-';
+        }
+    </script>
+</body>
+</html>
