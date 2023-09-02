@@ -94,7 +94,7 @@ The SCORE box will be reset with empty value -->
             <button class="button" onclick="addToScore(3)"style="background-color: blueviolet;" >0</button>
             <button class="button" onclick=""></button>
             <!-- ... other number buttons ... -->
-            <button class="button" onclick="enterScore()" id="enter">ENTER</button>
+            <button class="button" onclick="enterScore()" id="enter">ENTER</button> 
             <button class="button" onclick="resetScore()">RESET</button>
         </div>
         <div class="score-box"style="background-color: red" >MIN: <span id="minScore">-</span></div>
@@ -114,13 +114,14 @@ The SCORE box will be reset with empty value -->
         // Function to update the score box with the current score
         function updateScoreDisplay() {
             const scoreBox = document.getElementById('score');
-            scoreBox.textContent = currentScore;
+            scoreBox.innerText = currentScore;
+            
         }
 
         // Function to calculate and update the minimum and maximum scores
         function enterScore() {
-            const parsedScore = parseInt(currentScore);
-            if (!isNaN(parsedScore)) {
+            const parsedScore = (+currentScore);
+            if ((parsedScore)) {
                 if (parsedScore < minScore) {
                     minScore = parsedScore;
                     document.getElementById('minScore').innerText = minScore;
@@ -140,9 +141,12 @@ The SCORE box will be reset with empty value -->
             minScore = Infinity;
             maxScore = -Infinity;
             updateScoreDisplay();
-            document.getElementById('minScore').textContent = '-';
+            document.getElementById('minScore').innerText = '-';
             document.getElementById('maxScore').textContent = '-';
         }
     </script>
 </body>
-</html>
+</html> 
+
+
+
