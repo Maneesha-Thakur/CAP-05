@@ -1,240 +1,100 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masai Calculator</title>
-  <style>
-#display{
-
-height: 50px;
-  grid-column: span 4;
-    margin-top: 24px;
-            
-      border-radius: 9px;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-   
-      margin: 0 auto;
-    width: 350px;
-    border: 1px solid rgb(253, 252, 252);   
- 
-}
-#parent{
-  
-  display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4,85px);
-      grid-gap: 1px;
-      padding: 20px;
-      
-      width: 25%;
-      height: 400px;
-      margin: 0 auto;
-    
-      border: 1px solid whitesmoke;
-      background-color: white;
-  
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-#parent>.operation{
-border: 1px solid transparent;
-width: 50%;
-height: 50px;
-margin-top: 30px;
-
-background-color:white;
-border-radius: 10px;
-
-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-}input{
- 
-  border: 1px solid whitesmoke;
-height: 67px;
-  grid-column: span 4;
-    margin-top: 24px;
-            
-      border-radius: 9px;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      
-    
-}
-.operation{
-  text-align: center;
-  padding: 13px;
-
-margin: auto;
-}
-.multiplication{
-  text-align: center;
-  padding: 13px;
-
-margin:auto;
-border: 1px solid transparent;
-width: 50%;
-height: 50px;
-margin-top: 30px;
-
-background-color:white;
-border-radius: 10px;
-
-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-.digit{
-    text-align: center;
-  padding: 13px;
-
-margin: auto;
-border: 1px solid transparent;
-width: 50%;
-height: 50px;
-margin-top: 30px;
-
-background-color:white;
-border-radius: 10px;
-
-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-#equal{
-    text-align: center;
-  padding: 13px;
-
-margin: auto;
-border: 1px solid transparent;
-width: 80%;
-height: 75px;
-margin-top: 30px;
-
-background-color:white;
-border-radius: 10px;
-
-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-#reset{
-    text-align: center;
-  padding: 13px;
-
-margin: auto;
-border: 1px solid transparent;
-width: 80%;
-height: 75px;
-margin-top: 30px;
-
-background-color:white;
-border-radius: 10px;
-
-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-h1{
-  
-    text-align: center;
-    width: 100%;
-}
-.digit, .operation, .multiplication, #reset, #equal {
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+    <style>
+        h1 {
+            color: teal;
+            margin-left: 37%;
+            font-size: 37px;
+            margin-bottom: 40px;
         }
-
-        .digit:hover, .operation:hover,.multiplication:hover, #reset:hover, #equal:hover {
-            background-color: #333;
-            color: white;
-            transform: scale(1.05);
+        #main {
+            height: 350px;
+            width: 25%;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            grid-template-rows: repeat(20%,76%);
+            margin-left: 35%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
         }
-
-  </style>
+        #Dis{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+       #main>div{
+        width: 72%;
+        margin: auto;
+        margin-top:30px;
+        margin-bottom: 2px;
+        border-radius: 7px;
+       }
+       #Numb{
+        display:grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(4,50px);
+        gap:5px;
+       }
+       #Numb>div{
+        padding-top: 12px;
+        text-align: center;
+        font-weight: bolder;
+        border-radius: 7px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+    #Numb > div:hover {
+    background-color: yellowgreen; /* Change the background color on hover */
+    /* box-shadow: rgba(72, 93, 50, 0.5) 0px 8px 16px -2px, rgba(0, 0, 0, 0.6) 0px 4px 8px -4px; Modify the box shadow on hover */
+}
+       .opera{
+        background-color: black;
+        color: white;
+       }
+       #red{
+        background-color: red;
+        color: white;
+       }
+    </style>
 </head>
 <body>
-  <h1 style="font-size: 7vh;color: rgb(90, 117, 108);text-align: center;padding-bottom:23px;">Masai Calculator</h1>
-  <div class="child">
-  <h1 id="display">0</h1>
-  <div id="parent">
-  
-    <div class="digit"><p><b>1</b></p></div> 
-    <div class="digit"><p><b>2</b></p></div >
-    <div class="digit"><p><b>3</b></p>
+    <h1>Masai Calculator</h1>
+    <div id="main">
+        <div id="Dis"></div>
+        <div id="Numb">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="opera">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div class="opera">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div class="opera">*</div>
+            <div id="red">C</div>
+            <div>0</div>
+            <div class="opera">=</div>
+            <div class="opera">/</div>
+        </div>
     </div>
-    <div class="operation" style="background-color: black;color: white;"><p><b>+</b></p></div>
-    <div class="digit"><p><b>4</b></p></div>
-    <div class="digit"><p><b>5</b></p></div>
-    <div class="digit"><p><b>6</b></p></div>
-    <div class="operation" style="background-color: black;color: white;"><p><b>-</b></p></div>
-    <div class="digit"><p><b>7</b></p></div>
-    <div class="digit"><p><b>8</b>
-    </p></div>
-    <div class="digit"><p><b>9</b></p></div>
- 
-    <div class="multiplication" style="background-color: black;color: white;"><p><b>*</b></p></div>
-    <button id="reset" style="background-color: red;color: white;">C</button>
-    <div class="digit"><p><b>0</b></p></div>
-   
-    <button id="equal" style="background-color: black;color: white;">=</button>
-    <div class="operation" style="background-color: black;color: white;"><p><b>%</b></p></div>
-
-  </div>
-  </div>
 </body>
-</html>
 <script>
-    // JavaScript code here
-    document.addEventListener('DOMContentLoaded', function () {
-        let firstNo = '';
-        let secondNo = '';
-        let operator = '';
-        const display = document.getElementById('display');
-        const digitButtons = document.querySelectorAll('.digit');
-        const operatorButtons = document.querySelectorAll('.operation');
-        const equalButton = document.getElementById('equal');
-        const resetButton = document.getElementById('reset');
-        const multiplicationButton = document.querySelector('.multiplication');
-        let FN = true;
-
-        digitButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                if (FN) {
-                    firstNo += button.innerText;
-                    display.innerText = firstNo;
-                } else {
-                    secondNo += button.innerText;
-                    display.innerText = secondNo;
-                }
-            });
-        });
-
-        operatorButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                operator = button.innerText;
-                display.innerText = operator;
-                FN = false;
-            });
-          
-            multiplicationButton.addEventListener('click', function () {
-              operator = '*';
-              display.innerText = operator;
-              FN = false;
-            });
-            }); 
-
-        equalButton.addEventListener('click', function () {
-            if (firstNo !== '' && secondNo !== '' && operator !== '') {
-                const result = eval(firstNo + operator + secondNo);
-                display.innerText = result;
-                firstNo = String(result);
-                secondNo = '';
-                operator = '';
-                FN = true;
-            }
-        });
-
-        resetButton.addEventListener('click', function () {
-            firstNo = '';
-            secondNo = '';
-            operator = '';
-            display.innerText = '0';
-            FN = true;
-        });
-    });
-</script>
+ let num1=document.querySelectorAll("#Numb>div");
+ for(let i=0;i<num1.length;i++){
+    num1[i].addEventListener("click",cal)
+ }
+ let res="";
+ function cal(event){
+    let op=event.target.innerText;
+    if(op=="C"){
+        res="";
+        document.querySelector("#Dis").innerText="";
+    }else if (op=="="){
+        document.querySelector("#Dis").innerText=eval(res)
+    }else {
+        res +=op;
+        document.querySelector("#Dis").innerText=res
+    }
+ }
+ </script>
+ </html>
