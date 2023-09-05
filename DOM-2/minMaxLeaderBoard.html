@@ -5,148 +5,177 @@ By clicking on any number it shows up in the score box joined to any previous nu
 Once the button ENTER is pressed the score gets compared with the MIN and MAX boxes, if the current score is less than the MIN score it gets updated with the current score, if the current score is greater than the MAX score it gets updated with the current score
 The SCORE box will be reset with empty value -->
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
+    <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
+        body{
+            background-color: rgb(230, 226, 226);
         }
-
-        .leaderboard {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
+        #container{
+            width: 75%;
+            height: auto;
+            border: 1px solid whitesmoke;
+         
+            background-color: white;
+            margin: auto;
         }
-
-        .score-box {
-            font-size: 24px;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f8f8f8;
+        #parent{
+            display:grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,50px);
+        gap:50px;
+        background-color: white;
         }
-
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+        #parent>div{
+            margin: 23px auto 0  auto;
+            padding: 35px 0;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 30px;
+        color: white;
+        width: 100px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+          
         }
-
-        .button {
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            background-color: #e0e0e0;
-            transition: background-color 0.2s;
-            width: 30%;
-            margin: 5px;
-        }
-
-        .button:hover {
-            background-color: #d0d0d0;
-        }
-
-        #enter {
-            background-color:black;
-
-            color: #fff;
-        }
-
-        #enter:hover {
-            background-color: #e09500;
-        }
+       .score{
+        margin:40px auto;
+           width: 20%;
+           background-color:rgb(187, 176, 176);
+           border: 1px solid black;
+           text-align: center;
+           font-size: 40px;
+           padding: 40px;
+       }
+       .button{
+        display:grid;
+        grid-template-columns: repeat(3,100px);
+        gap:30px;
+        justify-content: center;
+        
+    }
+    .button>div{
+    height: 50px;
+        padding: 23px 0 23px 0;
+        text-align: center;
+        font-size: 40px;
+        border: 1px solid black;
+       }
+       button{
+        display: flex;
+        justify-content: center;
+        margin:20px  auto;
+        border:1px solid black ;
+        background-color: black;
+        padding: 10px 0;
+        color: white;
+        width: 30%;
+        height: 40px;
+        font-size: 23px;
+       }
     </style>
 </head>
 <body>
-    <div class="leaderboard">
-        <h1>Leaderboard</h1>
-        <div class="score-box" id="score"> </div>
-        <div class="buttons">
-            <button style="background-color: green;" class="button" onclick="addToScore(1)">1</button>
-            <button class="button" onclick="addToScore(2)"style="background-color: orange;">2</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: green;">3</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: orange;">4</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: orange;">5</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: orange;">6</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: green;">7</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: orange;">8</button>
-            <button class="button" onclick="addToScore(3)"style="background-color: green;">9</button>
-            <button class="button" onclick=""></button>
-            <button class="button" onclick="addToScore(3)"style="background-color: blueviolet;" >0</button>
-            <button class="button" onclick=""></button>
-            <!-- ... other number buttons ... -->
-            <button class="button" onclick="enterScore()" id="enter">ENTER</button> 
-            <button class="button" onclick="resetScore()">RESET</button>
-        </div>
-        <div class="score-box"style="background-color: red" >MIN: <span id="minScore">-</span></div>
-        <div class="score-box"style="background-color: green" >MAX: <span id="maxScore">-</span></div>
-    </div>
-    <script>
-        let currentScore = ''; // To store the current score
-        let minScore = Infinity; // To store the minimum score (initialized with positive infinity)
-        let maxScore = -Infinity; // To store the maximum score (initialized with negative infinity)
+    <div id="container">
+<div id="parent">
 
-        // Function to add a number to the current score
-        function addToScore(number) {
-            currentScore += number;
-            updateScoreDisplay();
-        }
+      <div class="max" style="background-color: red;" ></div> 
+      
+    <div class="min" style="background-color:green;" ></div>
+    
+    <div style="background-color: white; border: none; border-radius: 0px;padding: 0;font-size: 23px;color: black;" >MAX</div>
+    <div style="background-color: white; border: none; border-radius: 0px;padding: 0;font-size: 23px;color: black;">Min</div>
+</div>
+<div>
 
-        // Function to update the score box with the current score
-        function updateScoreDisplay() {
-            const scoreBox = document.getElementById('score');
-            scoreBox.innerText = currentScore;
-            
-        }
+    <div class="score">#</div>
+</div>
+<div class="button">
+    <div style="background-color: green;" >1</div>
+    <div style="background-color: orangered;">2</div>
+    <div style="background-color: green;">3</div>
+    <div style="background-color: orangered;">4</div>
+    <div style="background-color: orangered;">5</div>
+    <div style="background-color: orangered;">6</div>
+    <div style="background-color: green;">7</div>
+    <div style="background-color: orangered;">8</div>
+    <div style="background-color: green;">9</div>
+    <div style="border: none;"></div>
+    <div style="background-color:rgba(58, 4, 109, 0.829);">0</div>
+    <div style="border: none;"></div>
+   
+</div>
 
-        // Function to calculate and update the minimum and maximum scores
-        function enterScore() {
-            const parsedScore = (+currentScore);
-            if ((parsedScore)) {
-                if (parsedScore < minScore) {
-                    minScore = parsedScore;
-                    document.getElementById('minScore').innerText = minScore;
-                }
-                if (parsedScore > maxScore) {
-                    maxScore = parsedScore;
-                    document.getElementById('maxScore').textContent = maxScore;
-                }
-            }
-            currentScore = ''; // Reset the current score
-            updateScoreDisplay(); // Clear the score box
-        }
+    <button>ENTER</button>
 
-        // Function to reset the score box and scores
-        function resetScore() {
-            currentScore = '';
-            minScore = Infinity;
-            maxScore = -Infinity;
-            updateScoreDisplay();
-            document.getElementById('minScore').innerText = '-';
-            document.getElementById('maxScore').textContent = '-';
-        }
-    </script>
+</div>
+
 </body>
-</html> 
+<script>
+     // Variables to store MIN and MAX scores
+     let minScore = Infinity;
+    let maxScore = -Infinity;
+    let currentScore = ''; // Variable to store the current score
 
+    // Function to update the score display
+    function updateScoreDisplay() {
+        const scoreElement = document.querySelector('.score');
+        scoreElement.textContent = currentScore;
+    }
 
+    // Function to handle button clicks
+    function handleButtonClick(event) {
+        const buttonValue = event.target.textContent;
 
+        // Append the clicked button's value to the current score
+        currentScore += buttonValue;
+        updateScoreDisplay();
+    }
+
+    // Function to handle the ENTER button click
+    function handleEnterClick() {
+        // Convert the current score to a number
+        const numericScore = parseInt(currentScore);
+
+        // Check if the current score is less than the MIN score
+        if (numericScore < minScore) {
+            minScore = numericScore;
+            document.querySelector('.min').textContent = minScore;
+        }
+
+        // Check if the current score is greater than the MAX score
+        if (numericScore > maxScore) {
+            maxScore = numericScore;
+            document.querySelector('.max').textContent = maxScore;
+        }
+
+        // Reset the current score and update the score display
+        currentScore = '';
+        updateScoreDisplay();
+    }
+
+    // Function to reset the score to an empty value
+    function resetScore() {
+        currentScore = '';
+        updateScoreDisplay();
+    }
+
+    // Add click event listeners to all the number buttons
+    const numberButtons = document.querySelectorAll('.button div');
+    numberButtons.forEach((button) => {
+        button.addEventListener('click', handleButtonClick);
+    });
+
+    // Add click event listener to the ENTER button
+    const enterButton = document.querySelector('button');
+    enterButton.addEventListener('click', handleEnterClick);
+
+    // Add click event listener to reset the score
+    document.querySelector('.score').addEventListener('click', resetScore);
+ 
+</script>
+
+</html>
