@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Accounts</title>
+</head>
+<body>
+    <script>
+        // Constructor function for BankAccount
+        function BankAccount(accountNumber, name, type, balance) {
+            this.accountNumber = accountNumber;
+            this.name = name;
+            this.type = type;
+            this.balance = balance;
+            this.active = true; // Accounts are active by default
+        }
+
+        // Method to deposit money into the account
+        BankAccount.prototype.deposit = function (amount) {
+            if (amount > 0) {
+                this.balance += amount;
+                console.log(`${amount} deposited into account NO. = ${this.accountNumber}.`);
+            } else {
+                console.log("Invalid deposit amount.");
+            }
+        };
+
+        // Method to withdraw money from the account
+        BankAccount.prototype.withdraw = function (amount) {
+            if (amount > 0 && amount <= this.balance) {
+                this.balance -= amount;
+                console.log(`${amount} withdrawn from account number = ${this.accountNumber}.`);
+            } else {
+                console.log("Insufficient balance or invalid withdrawal amount.");
+            }
+        };
+
+        // Method to check the account balance
+        BankAccount.prototype.checkBalance = function () {
+            console.log(`Account number - ${this.accountNumber} balance is = $${this.balance}`);
+        };
+
+        // Method to check if the account is active
+        BankAccount.prototype.isActive = function () {
+            return this.active;
+        };
+
+        // Create multiple BankAccount objects
+        const account1 = new BankAccount("12345345765", "Alice", "Savings", 1000);
+        const account2 = new BankAccount("67890", "Bob", "Checking", 500);
+
+        // Perform operations on accounts
+        account1.deposit(200);
+        account1.checkBalance();
+        account1.withdraw(100);
+        account1.checkBalance();
+
+        account2.checkBalance();
+        account2.withdraw(600);
+        account2.checkBalance();
+
+        // Function to calculate the total balance of all active accounts
+        function getTotalBalance(accounts) {
+            let total = 0;
+            for (const account of accounts) {
+                if (account.isActive()) {
+                    total += account.balance;
+                }
+            }
+            return total;
+        }
+
+        // Test the getTotalBalance function
+        const accounts = [account1, account2];
+        const totalBalance = getTotalBalance(accounts);
+        console.log(`Total balance of all active accounts is = $${totalBalance}`);
+    </script>
+</body>
+</html>
