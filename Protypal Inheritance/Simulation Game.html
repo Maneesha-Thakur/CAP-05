@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Game</title>
+</head>
+<body>
+    <h1>
+       Simulation Game
+    </h1>
+    <script>
+
+// Task : Imagine you are developing a simulation game that involves various kinds of vehicles. Using the concepts of inheritance, prototype chains, and object-oriented design patterns learned in class.
+// _________________________
+
+// Create a basic Vehicle constructor function that initializes properties like brand, model, speed, and fuelType.
+function Vehicle(brand,model,speed,fuelType){
+    this.brand = brand;
+    this.model = model;
+    this.speed = speed;
+    this.fuelType = fuelType;
+}
+// Using the prototype, add common methods to the Vehicle object like accelerate(), brake(), and refuel().
+Vehicle.prototype.accelerate=function(amount){
+    // accelerate() should increase the speed of the vehicle.
+    this.speed+= amount
+}
+Vehicle.prototype.brake=function(amount){
+    // brake() should decrease the speed.
+this.speed -= amount
+}
+Vehicle.prototype.refuel=function(){
+    // refuel() should log a message indicating the vehicle is refueling.
+    console.log(`${this.brand} ${this.model} is refueling.`);
+}
+// Now, create a Car constructor function. The Car function should inherit properties and methods from the Vehicle object.
+//  Additionally, Car should have an extra property numberOfWheels 
+function Car(brand, model, speed, fuelType, numberOfWheels) {
+    Vehicle.call(this, brand, model, speed, fuelType);
+    this.numberOfWheels = numberOfWheels;
+}
+// Inherit from the Vehicle prototype
+Car.prototype = Object.create(Vehicle.prototype);
+
+
+// and a method honk() that logs a honking sound.
+Car.prototype.honk = function () {
+    console.log(`${this.brand} ${this.model} is honking.`);
+};
+
+// Similarly, create an Airplane constructor function that inherits from Vehicle. It should have properties numberOfEngines and hasLandingGear and a method takeOff() that logs a message indicating the airplane is taking off.
+function Airplane(brand, model, speed, fuelType, numberOfEngines, hasLandingGear) {
+  Vehicle.call(this, brand, model, speed, fuelType);
+  this.numberOfEngines = numberOfEngines;
+  this.hasLandingGear = hasLandingGear;
+}
+
+// Inherit from the Vehicle prototype
+Airplane.prototype = Object.create(Vehicle.prototype);
+
+Airplane.prototype.takeOff = function () {
+  console.log(`${this.brand} ${this.model} is taking off.`);
+};
+
+
+// Show how you would create a new instance of Car and Airplane, and demonstrate invoking their methods, ensuring that both types of vehicles can still accelerate, brake, and refuel through their prototype chain. 
+const myCar = new Car("Toyota", "Camry", 60, "Gasoline", 4);
+const myAirplane = new Airplane("Boeing", "747", 600, "Jet Fuel", 4, true);
+
+
+// invoking their methodsinvok method
+myCar.accelerate(20);
+myCar.honk();
+myCar.brake(10);
+myCar.refuel();
+
+myAirplane.accelerate(100);
+myAirplane.takeOff();
+myAirplane.brake(50);
+myAirplane.refuel();
+</script>
+</body>
+</html>

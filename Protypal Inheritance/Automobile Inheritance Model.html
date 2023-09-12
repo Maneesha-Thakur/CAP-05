@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Prototypal Inheritance
+    </title>
+</head>
+<body>
+  
+    <h1>
+Automobile Inheritance Model
+    </h1>
+    <script>
+
+// Description :-
+// Description :-
+// Implement an inheritance model for four wheeler automobiles.
+// Implement using both object.create() and constructor functions().
+// Think of properties of what can be inherited.
+let fourWheeler={
+   wheels:4,
+   fuel:'unleaded',
+   startEngine(){
+console.log('Engine Started')
+} ,
+   stopEngine(){
+console.log('Engine Stopped')
+} ,
+}
+
+const sedan = Object.create(fourWheeler);
+sedan.model = 'Sedan';
+sedan.color = 'Silver';
+sedan.year = 2023;
+
+
+console.log(`Model: ${sedan.model}`);
+console.log(`Color: ${sedan.color}`);
+console.log(`Year: ${sedan.year}`);
+sedan.startEngine();
+sedan.stopEngine();
+console.log(`Number of Wheels: ${sedan.wheels}`);
+console.log(`Fuel type: ${sedan.fuel}`);
+
+
+
+console.log('============================')
+
+//using constructor function
+
+function FourWheeler() {
+  this.wheels = 4;
+  this.fuel = 'unleaded';
+}
+
+FourWheeler.prototype.startEngine = function () {
+  console.log('Engine started');
+};
+
+FourWheeler.prototype.stopEngine = function () {
+  console.log('Engine stopped');
+};
+
+
+function SUV(model, color, year) {
+  this.model = model;
+  this.color = color;
+  this.year = year;
+}
+
+SUV.prototype = new FourWheeler();
+
+const suv = new SUV('SUV', 'Black', 2023);
+console.log(`Model: ${suv.model}`);
+console.log(`Color: ${suv.color}`);
+console.log(`Year: ${suv.year}`);
+suv.startEngine();
+suv.stopEngine();
+console.log(`Number of Wheels: ${suv.wheels}`);
+console.log(`Fuel type: ${suv.fuel}`);
+
+
+    </script>
+</body>
+</html>
