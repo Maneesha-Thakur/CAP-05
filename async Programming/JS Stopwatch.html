@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #stopwatch {
+            font-size: 2em;
+            margin: 10px;
+        }
+        #buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JS Stopwatch</h1>
+    <div id="stopwatch">0:00:00</div>
+    <div id="buttons">
+        <button onclick="startStop()">Start</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        let stopwatchDisplay = document.getElementById("stopwatch");
+        let startTime;
+        let intervalId;
+        let isRunning = false;
+        let elapsedSeconds = 0;
+
+        function startStop() {
+            if (isRunning) {
+                pause();
+            } else {
+                start();
+            }
+        }
+
+        function start() {
+            if (!isRunning) {
+                startTime = Date.now() - (elapsedSeconds * 1000);
+                intervalId = setInterval(updateStopwatch, 1000);
+                isRunning = true;
+                document.querySelector("button").textContent = "Pause";
+            }
+        }
+
+        function pause() {
+            if (isRunning) {
+                clearInterval(intervalId);
+                isRunning = false;
+                document.querySelector("button").textContent = "Start";
+            }
+        }
+
+        function reset() {
+            pause();
+            elapsedSeconds = 0;
+            updateStopwatch();
+        }
+
+        function updateStopwatch() {
+            if (isRunning) {
+                const currentTime = Date.now();
+                elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
+            }
+
+            const hours = Math.floor(elapsedSeconds / 3600);
+            const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+            const seconds = elapsedSeconds % 60;
+
+            const formattedTime = `${hours > 0 ? hours + ":" : ""}${minutes > 0 || hours > 0 ? (minutes < 10 ? "0" : "") + minutes + ":" : ""}${(seconds < 10 ? "0" : "") + seconds}`;
+            stopwatchDisplay.textContent = formattedTime;
+        }
+    </script>
+</body>
+</html>

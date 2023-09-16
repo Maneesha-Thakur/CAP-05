@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Slideshow</title>
+    <style>
+        /* Style for the slideshow container */
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Style for the slideshow images */
+        .mySlides {
+            display: none;
+        }
+
+        /* Style for the navigation buttons */
+        .btn {
+            cursor: pointer;
+        }
+
+        /* Style for the start/stop button */
+        .start-stop-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slides -->
+        <div class="mySlides">
+            <!-- <img src="image1.jpg" style="width: 100%;"> -->
+            <img src="https://images.freeimages.com/image/previews/4ea/valentine-s-dog-love-png-5690164.png" style="width: 100%;">
+        </div>
+        <!-- 2 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/vhq/images/previews/7bd/vector-sky-background-14300.jpg" style="width: 100%;">
+        </div>
+         <!--3-->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/365/images/previews/879/cartoon-landscape-59876.jpg" style="width: 100%;">
+        </div>
+        <!-- 4 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/oXcpy7HnQ2DUob2pBum4FAnu/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 5 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/HXcV3mUJ7w3qxpAKXyqD7Ah7/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 6 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/1c6/family-1171843.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 7 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/34e/williamstown-1057646.jpg" style="width: 100%;">
+        </div>
+        <!-- 8 -->
+        <div class="mySlides">
+           
+            <img src="https://i.etsystatic.com/21686165/r/il/512c86/4555552212/il_794xN.4555552212_yehv.jpg" style="width: 100%;">
+        </div>
+        <!-- 9 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/f3a/golden-temple-kyoto-1209790.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 10 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/ddf/tour-d-eiffel-1447025.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 11 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/e5c/mill-house-1637156.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 12 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/MKpx41txUVUjDmnHpp8oVNW2/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 13 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/QcgmG5uYujktDmzzgjSy7x1f/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 14 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/a4nP2t7D23VdcT1Eu14pX6hN/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 15 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/77c/nemo-the-horse-1339807.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 16 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/693/head-for-the-coast-1-1343393.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 17 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/cbot5QUb6UpkyKdys4QapbRX/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 18 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/vThXVJMA4hN85xFcKsMQRSYJ/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 19 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/variants/EnTJxV9UC7yKZbRrHo31jyhh/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- 20 -->
+        <div class="mySlides">
+           
+            <img src="https://images.freeimages.com/images/large-previews/bc9/stockholm-harbour-1630304.jpg?fmt=webp&w=350" style="width: 100%;">
+        </div>
+        <!-- Add more slides as needed -->
+
+        <!-- Navigation buttons -->
+        <button class="btn" onclick="plusSlides(-1)">Previous</button>
+        <button class="btn" onclick="plusSlides(1)">Next</button>
+
+        <!-- Start/Stop button -->
+        <button class="start-stop-btn" onclick="startStop()">Start</button>
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        var slideInterval;
+        var isRunning = false;
+
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            if (isRunning) {
+                clearInterval(slideInterval);
+                isRunning = false;
+                document.querySelector(".start-stop-btn").innerHTML = "Start";
+            }
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            if (isRunning) {
+                clearInterval(slideInterval);
+                isRunning = false;
+                document.querySelector(".start-stop-btn").innerHTML = "Start";
+            }
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function startStop() {
+            if (isRunning) {
+                clearInterval(slideInterval);
+                isRunning = false;
+                document.querySelector(".start-stop-btn").innerHTML = "Start";
+            } else {
+                slideInterval = setInterval(function () { plusSlides(1) }, 2000); // Change image every 2 seconds
+                isRunning = true;
+                document.querySelector(".start-stop-btn").innerHTML = "Stop";
+            }
+        }
+
+        startStop(); // Start the slideshow initially
+    </script>
+</body>
+</html>

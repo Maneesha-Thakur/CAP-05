@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        input[type="number"] {
+            width: 40px;
+            text-align: center;
+        }
+        #buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JS Timer</h1>
+    <div>
+        <label for="hours">Hours: </label>
+        <input type="number" id="hours" min="0">
+        <label for="minutes">Minutes: </label>
+        <input type="number" id="minutes" min="0" max="59">
+        <label for="seconds">Seconds: </label>
+        <input type="number" id="seconds" min="0" max="59">
+    </div>
+    <div id="timer">00:00:00</div>
+    <div id="buttons">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <script>
+        let timerDisplay = document.getElementById("timer");
+        let hoursInput = document.getElementById("hours");
+        let minutesInput = document.getElementById("minutes");
+        let secondsInput = document.getElementById("seconds");
+        let intervalId;
+        let totalSeconds = 0;
+        let isRunning = false;
+
+        function startTimer() {
+            if (!isRunning) {
+                totalSeconds = parseInt(hoursInput.value) * 3600 + parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
+                intervalId = setInterval(updateTimer, 1000);
+                isRunning = true;
+                disableInputs(true);
+            }
+        }
+
+        function pauseTimer() {
+            if (isRunning) {
+                clearInterval(intervalId);
+                isRunning = false;
+                disableInputs(false);
+            }
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            totalSeconds = 0;
+            updateTimerDisplay();
+            disableInputs(false);
+        }
+
+        function updateTimer() {
+            if (totalSeconds > 0) {
+                totalSeconds--;
+                updateTimerDisplay();
+            } else {
+                pauseTimer();
+            }
+        }
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            timerDisplay.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+        }
+
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        function disableInputs(disabled) {
+            hoursInput.disabled = disabled;
+            minutesInput.disabled = disabled;
+            secondsInput.disabled = disabled;
+        }
+    </script>
+</body>
+</html>
