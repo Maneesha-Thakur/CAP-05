@@ -3,101 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mini Calculator</title>
     <style>
         body {
-
-    margin: auto;
-    padding: 400px;
-};
-div{
-
-    display: flex;
-     gap: 10px;
-}
-input{
-    font-weight: 700;
-    font-size: 20px;
-    border: 1px solid rgb(197, 190, 190) ;
-    width: 30%;
-    height: 30px;
-    margin-right: 23px;
-}
-
-  button{
-    font-size: 19px;
-    font-weight:700;
-width: 100px;
-height: 30px;
-margin: 50px 25px;
-  }
-  h1{
-
-    text-align: center;
-    margin-right:400px;
-  }
-
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            font-size: 18px;
+            padding: 5px;
+            width: 150px;
+        }
+        button {
+            font-size: 18px;
+            padding: 5px 15px;
+        }
     </style>
 </head>
 <body>
-    <div >
+    <!-- Mini Calculator
+    Create a mini calculator application, which has following functionalities
+    Addition
+    Subtraction
+    Division
+    Multiplication
+    Your app should have
+    Two input boxes which should take two numbers from the user.
+    Four Buttons with following text content
+    Add
+    Subtract
+    Divide
+    Multiply
+    When user enter 2 and 4 and clicks on multiply button, an alert should come with 8 as ans
+    When user enter 8 and 4 and clicks on Divide button,an alert should come with 2 as ans -->
 
-        <h1> Mini Calculator</h1>
-        <input id="inp1"type="text" placeholder="Enter 1st number Here">
-        <input id="inp2"type="text" placeholder="Enter 2nd number Here">
-    </div>
 
-    <button onclick="ad()" >Add</button>
-    <button onclick="sub()">Substract</button>
+    <h1>Mini Calculator</h1>
+    <input id="num1" type="text" placeholder="Enter 1st number">
+    <input id="num2" type="text" placeholder="Enter 2nd number">
+    <br><br>
+    <button onclick="add()">Add</button>
+    <button onclick="sub()">Subtract</button>
     <button onclick="mul()">Multiply</button>
     <button onclick="divi()">Divide</button>
+
+    <script>
+        function add() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (!isNaN(num1) && !isNaN(num2)) {
+                const result = num1 + num2;
+                alert(`The result of ${num1} + ${num2} is: ${result}`);
+            } else {
+                alert("Please enter valid numbers.");
+            }
+        }
+
+        function sub() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (!isNaN(num1) && !isNaN(num2)) {
+                const result = num1 - num2;
+                alert(`The result of ${num1} - ${num2} is: ${result}`);
+            } else {
+                alert("Please enter valid numbers.");
+            }
+        }
+
+        function mul() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (!isNaN(num1) && !isNaN(num2)) {
+                const result = num1 * num2;
+                alert(`The result of ${num1} * ${num2} is: ${result}`);
+            } else {
+                alert("Please enter valid numbers.");
+            }
+        }
+
+        function divi() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (!isNaN(num1) && !isNaN(num2)) {
+                if (num2 !== 0) {
+                    const result = num1 / num2;
+                    alert(`The result of ${num1} / ${num2} is: ${result}`);
+                } else {
+                    alert("Division by zero is not allowed.");
+                }
+            } else {
+                alert("Please enter valid numbers.");
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-<script>
-//     Mini Calculator
-// Create a mini calculator application, which has following functionalities
-// Addition
-// Subtraction
-// Division
-// Multiplication
-// Your app should have
-// Two input boxes which should take two numbers from the user.
-// Four Buttons with following text content
-// Add
-// Subtract
-// Divide
-// Multiply
-// When user enter 2 and 4 and clicks on multiply button, an alert should come with 8 as ans
-// When user enter 8 and 4 and clicks on Divide button,an alert should come with 2 as ans
-
-function ad(){
-    let num1 = document.getElementById("inp1").value ;
-    let num2 =document.getElementById('inp2').value;
-    // let sum = parseInt(num1) +parseInt (num2);
-    let sum = +num1 + +(num2);
-    alert(`The answer is  ${sum}`);
-    }
-    function sub()
-    {
-        let n1=document.getElementById ('inp1').value;
-        let n2=document.getElementById ("inp2").value;
-
-        let s=n1-n2;
-        alert (`the Answer is ${s}`)
-
-    }
-    function mul (){
-        let m1=document.getElementById('inp1').value
-        let m2=document.getElementById('inp2').value
-        let mm=(m1*m2).toString();
-        alert(`${mm}`)
-        }
-        function divi ()
-        {
-            let d1=document.getElementById('inp1').value
-        let d2=document.getElementById('inp2').value
-        let dd =(d1/d2)
-        alert(`${dd}`)
-    }
