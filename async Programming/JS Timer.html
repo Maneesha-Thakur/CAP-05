@@ -37,6 +37,8 @@
     </div>
 
     <script>
+
+
         let timerDisplay = document.getElementById("timer");
         let hoursInput = document.getElementById("hours");
         let minutesInput = document.getElementById("minutes");
@@ -53,7 +55,7 @@
                 disableInputs(true);
             }
         }
-
+ 
         function pauseTimer() {
             if (isRunning) {
                 clearInterval(intervalId);
