@@ -1,0 +1,225 @@
+<!-- Problem Statement :-
+You have recently taken a McDonald’s franchise. You, being a software developer, want to design a virtual food ordering system to handle the orders coming in. Users should be able to place orders through it. Whenever one order is complete, it should be visible on the screen with the order number.
+
+Description :-
+Create a button called 'Order Food'. Create a checkbox of multiple food items you can choose from.
+When a user clicks on order food, create a promise that will resolve after random seconds.
+Once the promise is resolved, show the image of the food in the centre and show the order id on the top right corner.
+Try to make your virtual restaurant as real as possible. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's Virtual Food Ordering</title>
+    <style>
+        /* Your CSS styles here */
+        *{
+            margin: 0px;
+            padding: 0px;
+            background-color: #bebaba;
+        }
+        body {
+                 box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: white;
+    margin: auto;
+  
+    border: 1px solid rgb(247, 241, 241);
+    height: 1000px;
+}
+
+h1 {
+    color: #333;
+    background-color:rgb(228, 112, 112);
+    /* padding: 40px; */
+}
+h1 img {
+    color: #333;
+    background-color:rgb(228, 112, 112);
+    padding: 40px;
+    width: 600px;
+}
+
+#foodItems {
+    margin: 20px 0;
+    border: 1px solid rgb(248, 245, 245);
+}
+
+label {
+    margin-right: 20px;
+}
+
+#foodImageContainer {
+    /* display: none; */
+    display:flex;
+    margin-top: 20px;
+    position: relative; 
+   gap: 22px;
+   margin: auto;
+
+}
+#foodImageContainer img{
+margin: auto;
+}
+#orderButton{
+    border: none;
+    border-radius: 12px;
+    padding: 23px;
+    width: 300px;
+    cursor: pointer;
+    background-color: rgb(9, 146, 238);
+    margin:80px 0 ;
+    color:white;
+    font-size: 23px;
+}
+#orderButton:hover{
+    background-color: rgb(136, 195, 250);
+}
+input{
+    
+    margin-top: 50px;
+}
+
+#orderNumber {
+    position: absolute;
+  
+    top: 10px;
+    right: 10px;
+    background-color: #ffcc00;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    
+}
+
+    </style>
+</head>
+<body>
+    <h1>
+        <img src="https://seeklogo.com/images/M/mcdonald-s-logo-0D95A820B2-seeklogo.com.png" alt="" width="300px"
+        >
+    </h1>
+
+    <div id="foodItems">
+        <hr>
+        <label>
+            <input type="checkbox" id="burgerCheckbox" value="Burger"> Burger
+        </label>
+        <label>
+            <input type="checkbox" id="friesCheckbox" value="Fries"> Fries
+        </label>
+        <label>
+            <input type="checkbox" id="pizzaCheckbox" value="Pizza"> Pizza
+        </label>
+        <label>
+            <input type="checkbox" id="chickenCheckbox" value="Chicken"> Chicken
+        </label>
+        <label>
+            <input type="checkbox" id="omletCheckbox" value="Omlet"> Omlet
+        </label>
+        <br><br><br>
+        
+       <hr>
+
+        <!-- Add more food items as needed -->
+    </div>
+  
+    <div id="foodImageContainer">
+        <img id="burgerImage" src="" alt="Burger ">
+        <img id="friesImage" src="" alt="Fries ">
+        <img id="pizzaImage" src="" alt="Pizza ">
+        <img id="chickenImage" src="" alt="Chicken ">
+        <img id="omletImage" src="" alt="Omlet ">
+
+        <br><br>
+        
+
+        <div id="orderNumber"></div>
+    </div>
+    <button id="orderButton">Order Food</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const orderButton = document.getElementById("orderButton");
+            const foodImageContainer = document.getElementById("foodImageContainer");
+            const orderNumber = document.getElementById("orderNumber");
+
+            // Function to generate a random order ID
+            function generateOrderID() {
+                return Math.floor(Math.random() * 10000);
+            }
+
+            // Define food item images
+            const foodImages = {
+                // Burger: "burger-image-url.jpg",
+                Burger: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRri9uRJpP8cJlZqmZ9wKWeM9fSptBWfFot-t4KuLLQyWcwJXqsXNJShm5LncTNyxVhl_s&usqp=CAU",
+                Fries: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDPbi4fwaDR6ChF9h6wlfFaiC-h0y41qNUD-0faXHDuQIaEY5ejApn7DytkUgCSPM7qvI&usqp=CAU",
+                Pizza: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56Doy-cgX33EjAb5HdFFIOn--MdAqEff7sxKkv6-GN9vr2B0WG9NEfAbSlhOT9DpYGEk&usqp=CAU",
+                Chicken: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQek-T13620vU19gZ888FuzkUrS0OY-Rpwyb_n9R3WvmtMBraueIhHvDPe6exGqrcMpRLM&usqp=CAU",
+                Omlet: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl0MffViyiPEDrFMxqMBsLHftEnPKTW6n7vDdwWvkwblkXEwO6iTxlPjHPaVRiBfzP7S0&usqp=CAUg",
+                // Add more items and image URLs as needed
+
+              
+            };
+
+            // Function to handle food ordering
+            async function orderFood() {
+                // Disable the order button while processing
+                orderButton.disabled = true;
+
+                // Determine selected food items
+                const selectedItems = [];
+
+                if (document.getElementById("burgerCheckbox").checked) {
+                    selectedItems.push("Burger");
+                }
+                if (document.getElementById("friesCheckbox").checked) {
+                    selectedItems.push("Fries");
+                }
+                if (document.getElementById("pizzaCheckbox").checked) {
+                    selectedItems.push("Pizza");
+                }
+                if (document.getElementById("chickenCheckbox").checked) {
+                    selectedItems.push("Chicken");
+                }
+                if (document.getElementById("omletCheckbox").checked) {
+                    selectedItems.push("Omlet");
+                }
+
+                if (selectedItems.length === 0) {
+                    alert("Please select at least one food item.");
+                    orderButton.disabled = false;
+                    return;
+                }
+
+                // Simulate order processing with a random delay (2-5 seconds)
+                const processingTime = Math.floor(Math.random() * 3000) + 2000;
+                await new Promise(resolve => setTimeout(resolve, processingTime));
+
+                // Hide all images initially
+                Object.keys(foodImages).forEach(item => {
+                    const imageElement = document.getElementById(`${item.toLowerCase()}Image`);
+                    imageElement.style.display = "none";
+                });
+
+                // Display selected food item images and order number
+                selectedItems.forEach(item => {
+                    const imageElement = document.getElementById(`${item.toLowerCase()}Image`);
+                    imageElement.src = foodImages[item];
+                    imageElement.alt = `${item} Image`;
+                    imageElement.style.display = "block";
+                });
+                orderNumber.textContent = `Order ID: #${generateOrderID()}`;
+
+                // Enable the order button again
+                orderButton.disabled = false;
+            }
+
+            // Add a click event listener to the order button
+            orderButton.addEventListener("click", orderFood);
+        });
+    </script>
+</body>
+</html>
