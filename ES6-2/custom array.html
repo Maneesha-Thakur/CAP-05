@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <h1>Custom Array</h1>
+    <script>
+        // CustomArray constructor
+function CustomArray() {
+  // Initialize the size property based on the number of arguments
+  this.size = arguments.length;
+
+  // Add the arguments as key-value pairs to the Array object
+  for (let i = 0; i < arguments.length; i++) {
+    this[i] = arguments[i];
+  }
+}
+
+// Custom method to add an element at the end
+CustomArray.prototype.push = function (element) {
+  this[this.size] = element;
+  this.size++;
+};
+
+// Custom method to remove an element from the end
+CustomArray.prototype.pop = function () {
+  if (this.size === 0) {
+    return undefined; // Stack is empty
+  }
+  const removedElement = this[this.size - 1];
+  delete this[this.size - 1];
+  this.size--;
+  return removedElement;
+};
+
+// Custom method to return the element at the last index
+CustomArray.prototype.top = function () {
+  if (this.size === 0) {
+    return undefined; // Stack is empty
+  }
+  return this[this.size - 1];
+};
+
+// Custom method to print the elements in a single line
+CustomArray.prototype.print = function () {
+  const elements = [];
+  for (let i = 0; i < this.size; i++) {
+    elements.push(this[i]);
+  }
+  console.log(`[${elements.join(',')}]`);
+};
+
+// Custom method to print the elements in a single line in reverse order
+CustomArray.prototype.printReverse = function () {
+  const elements = [];
+  for (let i = this.size - 1; i >= 0; i--) {
+    elements.push(this[i]);
+  }
+  console.log(`[${elements.join(',')}]`);
+};
+
+// Create an instance of CustomArray
+const myArray = new CustomArray(1, 2, 3, 4);
+
+// Example usage:
+myArray.push(5);
+myArray.pop();
+console.log("Top element:", myArray.top());
+myArray.print();
+myArray.printReverse();
+console.log("Size:", myArray.size);
+
+    </script>
+</body>
+</html>
