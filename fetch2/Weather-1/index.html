@@ -8,7 +8,32 @@
     <title>Weather App</title>
     
 </head>
-<body>
+<body><!DOCTYPE html>
+    <html>
+    <head>
+       <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button id="searchButton">Search</button>
+        </header>
+        <div class="container">
+            <div id="mapContainer">
+            
+                <iframe id="gmap_canvas" width="600" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            </div>
+            <div id="weatherContainer">
+                <!-- Weather details display goes here -->
+            </div>
+        </div>
+    </body>
+    </html>
+    
+    <script src="script.js">
+        
+    </script>
+    
     <header>
         <h1>Weather App</h1>
         <input type="text" id="cityInput" placeholder="Enter city name">
